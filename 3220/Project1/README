@@ -1,0 +1,23 @@
+Rob Hughes C11411208
+3220 Project 1
+MAKEFILE
+
+
+
+KNOWN PROBLEMS
+--------------
+Output format has been slightly off in some cases but more
+in others, and sycall misses.
+
+
+
+DESIGN
+------
+The shim utilizes a linked list to store addresses of allocated pieces.
+Pieces are introduced at the head of the linked list, storing its size and
+own reference. Whichever pieces are unfreed at the end of the program, are
+printed and remain in the list. The syscall tracer keeps the syscalls in 
+an array via static allocation, and prints every syscall called <0 times. 
+It uses strtok to turn the called argument into an array, which is then 
+passed to execvp.  
+ 
